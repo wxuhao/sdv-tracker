@@ -20,12 +20,8 @@ async function getTheFile() {
     while (true) {
         // get file contents
         const fileData = await fileHandle.getFile();
-        requestParse(fileData);
+        parseFile(fileData);
         // sleep
-        await new Promise(r => setTimeout(r, 5000));
+        await new Promise(r => setTimeout(r, 500000));
     }
-}
-
-async function requestParse(fileData) {
-    parseFile(fileData);
 }
