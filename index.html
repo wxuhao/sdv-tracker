@@ -1,0 +1,758 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+  <meta http-equiv="x-ua-compatible" content="ie=edge" />
+  <title>Stardew Tracker</title>
+  <!-- MDB icon -->
+  <link rel="icon" href="img/mdb-favicon.ico" type="image/x-icon" />
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.2/css/all.css" />
+  <!-- Google Fonts Roboto -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" />
+  <!-- MDB -->
+  <link rel="stylesheet" href="css/mdb.min.css" />
+  <!-- Custom styles -->
+  <link rel="stylesheet" href="css/index.css" />
+</head>
+
+<body>
+  <!--Main Navigation-->
+  <header>
+    <!-- Sidebar -->
+    <nav id="sidebar_menu" class="collapse d-lg-block sidebar collapse bg-white">
+      <div class="position-sticky">
+        <div class="list-group list-group-flush mx-3 mt-4">
+          <a href="#farmer_section" class="list-group-item list-group-item-action py-2 ripple" aria-current="true">
+            <i class="fas fa-user-circle fa-fw me-3"></i><span>Farmer</span>
+          </a>
+          <a href="#skills_section" class="list-group-item list-group-item-action py-2 ripple">
+            <i class="fas fa-bar-chart fa-fw me-3"></i><span>Skills</span>
+          </a>
+          <a href="#friendship_section" class="list-group-item list-group-item-action py-2 ripple"><i
+              class="fas fa-heart fa-fw me-3"></i><span>Friendship</span></a>
+          <a href="#crafting_section" class="list-group-item list-group-item-action py-2 ripple"><i
+              class="fas fa-wrench fa-fw me-3"></i><span>Crafting</span></a>
+          <a href="#shipped_section" class="list-group-item list-group-item-action py-2 ripple">
+            <i class="fas fa-archiv fa-fw me-3"></i><span>Items Shipped</span>
+          </a>
+          <a href="#fish_section" class="list-group-item list-group-item-action py-2 ripple"><i
+              class="fas fa-tint fa-fw me-3"></i><span>Fish</span></a>
+          <a href="#artifacts_section" class="list-group-item list-group-item-action py-2 ripple"><i
+              class="fas fa-trophy fa-fw me-3"></i><span>Artifacts</span></a>
+          <a href="#minerals_section" class="list-group-item list-group-item-action py-2 ripple"><i
+              class="fas fa-diamond fa-fw me-3"></i><span>Minerals</span></a>
+          <a href="#cooking_section" class="list-group-item list-group-item-action py-2 ripple"><i
+              class="fas fa-cutlery fa-fw me-3"></i><span>Cooking</span></a>
+          <a href="#community_section" class="list-group-item list-group-item-action py-2 ripple"><i
+              class="fas fa-home fa-fw me-3"></i><span>Community Center</span></a>
+          <a href="#eradication_section" class="list-group-item list-group-item-action py-2 ripple"><i
+              class="fas fa-times-circle fa-fw me-3"></i><span>Eradication Goals</span></a>
+          <a href="#museum_section" class="list-group-item list-group-item-action py-2 ripple"><i
+              class="fas fa-building fa-fw me-3"></i><span>Museum</span></a>
+          <a href="#grandpa_section" class="list-group-item list-group-item-action py-2 ripple"><i
+              class="fas fa-smile-o fa-fw me-3"></i><span>Grandpa</span></a>
+        </div>
+      </div>
+    </nav>
+    <!-- Sidebar -->
+
+    <!-- Navbar -->
+    <nav id="main_navbar" class="navbar navbar-expand-lg navbar-light bg-white fixed-top">
+      <!-- Container wrapper -->
+      <div class="container-fluid">
+        <!-- Toggle button -->
+        <button class="navbar-toggler" type="button" data-mdb-toggle="collapse" data-mdb-target="#sidebar_menu"
+          aria-controls="sidebar_menu" aria-expanded="false" aria-label="Toggle navigation">
+          <i class="fas fa-bars"></i>
+        </button>
+
+        <!-- Brand -->
+        <a class="navbar-brand" href="#">
+          <img src="img/logo.png" height="25" alt="" loading="lazy" />
+        </a>
+
+        <!-- Save upload -->
+        <button type="button" class="btn btn-info" onclick="getTheFile()">Upload save</button>
+        <!-- Save upload -->
+
+        <!-- Search form -->
+        <form class="d-none d-md-flex input-group w-auto my-auto">
+          <input autocomplete="off" type="search" class="form-control rounded" placeholder='Search'
+            style="min-width: 225px" />
+          <span class="input-group-text border-0"><i class="fas fa-search"></i></span>
+        </form>
+      </div>
+      <!-- Container wrapper -->
+    </nav>
+    <!-- Navbar -->
+  </header>
+  <!--Main Navigation-->
+
+  <!--Main layout-->
+  <main style="margin-top: 40px">
+    <div class="container-fluid pt-4">
+
+      <!-- Section: Farmer  -->
+      <section class="mb-4" id="farmer_section">
+        <div class="card">
+          <div class="card-header py-3">
+            <h5 class="mb-0 text-center"><strong>Farm name</strong></h5>
+          </div>
+          <div class="card-body">
+            <canvas class="my-4 w-100" height="380"></canvas>
+          </div>
+        </div>
+      </section>
+      <!-- Section: Farmer -->
+
+      <!--Section: Skills-->
+      <section id="skills_section">
+        <div class="row">
+          <div class="row">
+            <div class="col-xl-3 col-sm-6 col-12 mb-4">
+              <div class="card">
+                <div class="card-body">
+                  <div class="d-flex justify-content-between px-md-1">
+                    <div>
+                      <h3 class="text-info">Farming</h3>
+                      <p class="mb-0">8/10</p>
+                    </div>
+                    <div class="align-self-center">
+                      <i class="fas fa-book-open text-info fa-3x"></i>
+                    </div>
+                  </div>
+                  <div class="px-md-1">
+                    <div class="progress mt-3 mb-1 rounded" style="height: 7px">
+                      <div class="progress-bar bg-info" role="progressbar" style="width: 80%" aria-valuenow="80"
+                        aria-valuemin="0" aria-valuemax="100"></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-xl-3 col-sm-6 col-12 mb-4">
+              <div class="card">
+                <div class="card-body">
+                  <div class="d-flex justify-content-between px-md-1">
+                    <div>
+                      <h3 class="text-warning">Fishing</h3>
+                      <p class="mb-0">35/100</p>
+                    </div>
+                    <div class="align-self-center">
+                      <i class="far fa-comments text-warning fa-3x"></i>
+                    </div>
+                  </div>
+                  <div class="px-md-1">
+                    <div class="progress mt-3 mb-1 rounded" style="height: 7px">
+                      <div class="progress-bar bg-warning" role="progressbar" style="width: 35%" aria-valuenow="35"
+                        aria-valuemin="0" aria-valuemax="100"></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!--Section: Skills-->
+
+      <!--Section: Friendship-->
+      <section id="friendship_section">
+        <div class="row">
+          <div class="row">
+            <div class="col-xl-3 col-sm-6 col-12 mb-4">
+              <div class="card">
+                <div class="card-body">
+                  <div class="d-flex justify-content-between px-md-1">
+                    <div>
+                      <h3 class="text-info">Farming</h3>
+                      <p class="mb-0">8/10</p>
+                    </div>
+                    <div class="align-self-center">
+                      <img src="img/villagers/Abigail.png" class="img-fluid" alt="Abigail" style="max-height: 100px; max-width: 100px;">
+                    </div>
+                  </div>
+                  <div class="px-md-1">
+                    <div class="progress mt-3 mb-1 rounded" style="height: 7px">
+                      <div class="progress-bar bg-info" role="progressbar" style="width: 80%" aria-valuenow="80"
+                        aria-valuemin="0" aria-valuemax="100"></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-xl-3 col-sm-6 col-12 mb-4">
+              <div class="card">
+                <div class="card-body">
+                  <div class="d-flex justify-content-between px-md-1">
+                    <div>
+                      <h3 class="text-warning">Fishing</h3>
+                      <p class="mb-0">35/100</p>
+                    </div>
+                    <div class="align-self-center">
+                      <i class="far fa-comments text-warning fa-3x"></i>
+                    </div>
+                  </div>
+                  <div class="px-md-1">
+                    <div class="progress mt-3 mb-1 rounded" style="height: 7px">
+                      <div class="progress-bar bg-warning" role="progressbar" style="width: 35%" aria-valuenow="35"
+                        aria-valuemin="0" aria-valuemax="100"></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!--Section: Friendship-->
+
+      <!--Section: Crafting-->
+      <section id="crafting_section">
+        <div class="row">
+          <div class="row">
+            <div class="col-xl-3 col-sm-6 col-12 mb-4">
+              <div class="card">
+                <div class="card-body">
+                  <div class="d-flex justify-content-between px-md-1">
+                    <div>
+                      <h3 class="text-info">Farming</h3>
+                      <p class="mb-0">8/10</p>
+                    </div>
+                    <div class="align-self-center">
+                      <i class="fas fa-book-open text-info fa-3x"></i>
+                    </div>
+                  </div>
+                  <div class="px-md-1">
+                    <div class="progress mt-3 mb-1 rounded" style="height: 7px">
+                      <div class="progress-bar bg-info" role="progressbar" style="width: 80%" aria-valuenow="80"
+                        aria-valuemin="0" aria-valuemax="100"></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-xl-3 col-sm-6 col-12 mb-4">
+              <div class="card">
+                <div class="card-body">
+                  <div class="d-flex justify-content-between px-md-1">
+                    <div>
+                      <h3 class="text-warning">Fishing</h3>
+                      <p class="mb-0">35/100</p>
+                    </div>
+                    <div class="align-self-center">
+                      <i class="far fa-comments text-warning fa-3x"></i>
+                    </div>
+                  </div>
+                  <div class="px-md-1">
+                    <div class="progress mt-3 mb-1 rounded" style="height: 7px">
+                      <div class="progress-bar bg-warning" role="progressbar" style="width: 35%" aria-valuenow="35"
+                        aria-valuemin="0" aria-valuemax="100"></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!--Section: Crafting-->
+
+      <!--Section: Shipped-->
+      <section id="shipped_section">
+        <div class="row">
+          <div class="row">
+            <div class="col-xl-3 col-sm-6 col-12 mb-4">
+              <div class="card">
+                <div class="card-body">
+                  <div class="d-flex justify-content-between px-md-1">
+                    <div>
+                      <h3 class="text-info">Farming</h3>
+                      <p class="mb-0">8/10</p>
+                    </div>
+                    <div class="align-self-center">
+                      <i class="fas fa-book-open text-info fa-3x"></i>
+                    </div>
+                  </div>
+                  <div class="px-md-1">
+                    <div class="progress mt-3 mb-1 rounded" style="height: 7px">
+                      <div class="progress-bar bg-info" role="progressbar" style="width: 80%" aria-valuenow="80"
+                        aria-valuemin="0" aria-valuemax="100"></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-xl-3 col-sm-6 col-12 mb-4">
+              <div class="card">
+                <div class="card-body">
+                  <div class="d-flex justify-content-between px-md-1">
+                    <div>
+                      <h3 class="text-info">Farming</h3>
+                      <p class="mb-0">8/10</p>
+                    </div>
+                    <div class="align-self-center">
+                      <i class="fas fa-book-open text-info fa-3x"></i>
+                    </div>
+                  </div>
+                  <div class="px-md-1">
+                    <div class="progress mt-3 mb-1 rounded" style="height: 7px">
+                      <div class="progress-bar bg-info" role="progressbar" style="width: 80%" aria-valuenow="80"
+                        aria-valuemin="0" aria-valuemax="100"></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-xl-3 col-sm-6 col-12 mb-4">
+              <div class="card">
+                <div class="card-body">
+                  <div class="d-flex justify-content-between px-md-1">
+                    <div>
+                      <h3 class="text-warning">Fishing</h3>
+                      <p class="mb-0">35/100</p>
+                    </div>
+                    <div class="align-self-center">
+                      <i class="far fa-comments text-warning fa-3x"></i>
+                    </div>
+                  </div>
+                  <div class="px-md-1">
+                    <div class="progress mt-3 mb-1 rounded" style="height: 7px">
+                      <div class="progress-bar bg-warning" role="progressbar" style="width: 35%" aria-valuenow="35"
+                        aria-valuemin="0" aria-valuemax="100"></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!--Section: Shipped-->
+
+      <!--Section: Fish-->
+      <section id="fish_section">
+        <div class="row">
+          <div class="row">
+            <div class="col-xl-3 col-sm-6 col-12 mb-4">
+              <div class="card">
+                <div class="card-body">
+                  <div class="d-flex justify-content-between px-md-1">
+                    <div>
+                      <h3 class="text-info">Farming</h3>
+                      <p class="mb-0">8/10</p>
+                    </div>
+                    <div class="align-self-center">
+                      <i class="fas fa-book-open text-info fa-3x"></i>
+                    </div>
+                  </div>
+                  <div class="px-md-1">
+                    <div class="progress mt-3 mb-1 rounded" style="height: 7px">
+                      <div class="progress-bar bg-info" role="progressbar" style="width: 80%" aria-valuenow="80"
+                        aria-valuemin="0" aria-valuemax="100"></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-xl-3 col-sm-6 col-12 mb-4">
+              <div class="card">
+                <div class="card-body">
+                  <div class="d-flex justify-content-between px-md-1">
+                    <div>
+                      <h3 class="text-warning">Fishing</h3>
+                      <p class="mb-0">35/100</p>
+                    </div>
+                    <div class="align-self-center">
+                      <i class="far fa-comments text-warning fa-3x"></i>
+                    </div>
+                  </div>
+                  <div class="px-md-1">
+                    <div class="progress mt-3 mb-1 rounded" style="height: 7px">
+                      <div class="progress-bar bg-warning" role="progressbar" style="width: 35%" aria-valuenow="35"
+                        aria-valuemin="0" aria-valuemax="100"></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!--Section: Fish-->
+
+      <!--Section: Artifacts-->
+      <section id="artifacts_section">
+        <div class="row">
+          <div class="row">
+            <div class="col-xl-3 col-sm-6 col-12 mb-4">
+              <div class="card">
+                <div class="card-body">
+                  <div class="d-flex justify-content-between px-md-1">
+                    <div>
+                      <h3 class="text-info">Farming</h3>
+                      <p class="mb-0">8/10</p>
+                    </div>
+                    <div class="align-self-center">
+                      <i class="fas fa-book-open text-info fa-3x"></i>
+                    </div>
+                  </div>
+                  <div class="px-md-1">
+                    <div class="progress mt-3 mb-1 rounded" style="height: 7px">
+                      <div class="progress-bar bg-info" role="progressbar" style="width: 80%" aria-valuenow="80"
+                        aria-valuemin="0" aria-valuemax="100"></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-xl-3 col-sm-6 col-12 mb-4">
+              <div class="card">
+                <div class="card-body">
+                  <div class="d-flex justify-content-between px-md-1">
+                    <div>
+                      <h3 class="text-warning">Fishing</h3>
+                      <p class="mb-0">35/100</p>
+                    </div>
+                    <div class="align-self-center">
+                      <i class="far fa-comments text-warning fa-3x"></i>
+                    </div>
+                  </div>
+                  <div class="px-md-1">
+                    <div class="progress mt-3 mb-1 rounded" style="height: 7px">
+                      <div class="progress-bar bg-warning" role="progressbar" style="width: 35%" aria-valuenow="35"
+                        aria-valuemin="0" aria-valuemax="100"></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!--Section: Artifacts-->
+
+      <!--Section: Minerals-->
+      <section id="minerals_section">
+        <div class="row">
+          <div class="row">
+            <div class="col-xl-3 col-sm-6 col-12 mb-4">
+              <div class="card">
+                <div class="card-body">
+                  <div class="d-flex justify-content-between px-md-1">
+                    <div>
+                      <h3 class="text-info">Farming</h3>
+                      <p class="mb-0">8/10</p>
+                    </div>
+                    <div class="align-self-center">
+                      <i class="fas fa-book-open text-info fa-3x"></i>
+                    </div>
+                  </div>
+                  <div class="px-md-1">
+                    <div class="progress mt-3 mb-1 rounded" style="height: 7px">
+                      <div class="progress-bar bg-info" role="progressbar" style="width: 80%" aria-valuenow="80"
+                        aria-valuemin="0" aria-valuemax="100"></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-xl-3 col-sm-6 col-12 mb-4">
+              <div class="card">
+                <div class="card-body">
+                  <div class="d-flex justify-content-between px-md-1">
+                    <div>
+                      <h3 class="text-warning">Fishing</h3>
+                      <p class="mb-0">35/100</p>
+                    </div>
+                    <div class="align-self-center">
+                      <i class="far fa-comments text-warning fa-3x"></i>
+                    </div>
+                  </div>
+                  <div class="px-md-1">
+                    <div class="progress mt-3 mb-1 rounded" style="height: 7px">
+                      <div class="progress-bar bg-warning" role="progressbar" style="width: 35%" aria-valuenow="35"
+                        aria-valuemin="0" aria-valuemax="100"></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!--Section: Minerals-->
+
+      <!--Section: Cooking-->
+      <section id="cooking_section">
+        <div class="row">
+          <div class="row">
+            <div class="col-xl-3 col-sm-6 col-12 mb-4">
+              <div class="card">
+                <div class="card-body">
+                  <div class="d-flex justify-content-between px-md-1">
+                    <div>
+                      <h3 class="text-info">Farming</h3>
+                      <p class="mb-0">8/10</p>
+                    </div>
+                    <div class="align-self-center">
+                      <i class="fas fa-book-open text-info fa-3x"></i>
+                    </div>
+                  </div>
+                  <div class="px-md-1">
+                    <div class="progress mt-3 mb-1 rounded" style="height: 7px">
+                      <div class="progress-bar bg-info" role="progressbar" style="width: 80%" aria-valuenow="80"
+                        aria-valuemin="0" aria-valuemax="100"></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-xl-3 col-sm-6 col-12 mb-4">
+              <div class="card">
+                <div class="card-body">
+                  <div class="d-flex justify-content-between px-md-1">
+                    <div>
+                      <h3 class="text-warning">Fishing</h3>
+                      <p class="mb-0">35/100</p>
+                    </div>
+                    <div class="align-self-center">
+                      <i class="far fa-comments text-warning fa-3x"></i>
+                    </div>
+                  </div>
+                  <div class="px-md-1">
+                    <div class="progress mt-3 mb-1 rounded" style="height: 7px">
+                      <div class="progress-bar bg-warning" role="progressbar" style="width: 35%" aria-valuenow="35"
+                        aria-valuemin="0" aria-valuemax="100"></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!--Section: Cooking-->
+
+      <!--Section: Community-->
+      <section class="mb-4" id="community_section">
+        <div class="card">
+          <div class="card-header text-center py-3">
+            <h5 class="mb-0 text-center">
+              <strong>test</strong>
+            </h5>
+          </div>
+          <div class="card-body">
+            <div class="table-responsive">
+              <table class="table table-hover text-nowrap">
+                <thead>
+                  <tr>
+                    <th scope="col"></th>
+                    <th scope="col">Community Center</th>
+                    <th scope="col">Community Center</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <th scope="row">Community Center</th>
+                    <td>
+                      <span class="text-danger">
+                        <i class="fas me-1"></i><span>Community Center</span>
+                      </span>
+                    </td>
+                    <td>
+                      <span class="text-success">
+                        <i class="fas me-1"></i><span>Community Center</span>
+                      </span>
+                    </td>
+                  </tr>
+                  <tr>
+                    <th scope="row">wawa</th>
+                    <td>
+                      <span class="text-danger">
+                        <i class="fas me-1"></i><span>wa</span>
+                      </span>
+                    </td>
+                    <td>
+                      <span class="text-success">
+                        <i class="fas me-1"></i><span>28</span>
+                      </span>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!--Section: Community-->
+
+      <!--Section: Eradication-->
+      <section id="eradication_section">
+        <div class="row">
+          <div class="row">
+            <div class="col-xl-3 col-sm-6 col-12 mb-4">
+              <div class="card">
+                <div class="card-body">
+                  <div class="d-flex justify-content-between px-md-1">
+                    <div>
+                      <h3 class="text-info">Farming</h3>
+                      <p class="mb-0">8/10</p>
+                    </div>
+                    <div class="align-self-center">
+                      <i class="fas fa-book-open text-info fa-3x"></i>
+                    </div>
+                  </div>
+                  <div class="px-md-1">
+                    <div class="progress mt-3 mb-1 rounded" style="height: 7px">
+                      <div class="progress-bar bg-info" role="progressbar" style="width: 80%" aria-valuenow="80"
+                        aria-valuemin="0" aria-valuemax="100"></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-xl-3 col-sm-6 col-12 mb-4">
+              <div class="card">
+                <div class="card-body">
+                  <div class="d-flex justify-content-between px-md-1">
+                    <div>
+                      <h3 class="text-warning">Fishing</h3>
+                      <p class="mb-0">35/100</p>
+                    </div>
+                    <div class="align-self-center">
+                      <i class="far fa-comments text-warning fa-3x"></i>
+                    </div>
+                  </div>
+                  <div class="px-md-1">
+                    <div class="progress mt-3 mb-1 rounded" style="height: 7px">
+                      <div class="progress-bar bg-warning" role="progressbar" style="width: 35%" aria-valuenow="35"
+                        aria-valuemin="0" aria-valuemax="100"></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!--Section: Eradication-->
+
+      <!--Section: Museum-->
+      <section id="museum_section">
+        <div class="row">
+          <div class="row">
+            <div class="col-xl-3 col-sm-6 col-12 mb-4">
+              <div class="card">
+                <div class="card-body">
+                  <div class="d-flex justify-content-between px-md-1">
+                    <div>
+                      <h3 class="text-info">Farming</h3>
+                      <p class="mb-0">8/10</p>
+                    </div>
+                    <div class="align-self-center">
+                      <i class="fas fa-book-open text-info fa-3x"></i>
+                    </div>
+                  </div>
+                  <div class="px-md-1">
+                    <div class="progress mt-3 mb-1 rounded" style="height: 7px">
+                      <div class="progress-bar bg-info" role="progressbar" style="width: 80%" aria-valuenow="80"
+                        aria-valuemin="0" aria-valuemax="100"></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-xl-3 col-sm-6 col-12 mb-4">
+              <div class="card">
+                <div class="card-body">
+                  <div class="d-flex justify-content-between px-md-1">
+                    <div>
+                      <h3 class="text-warning">Fishing</h3>
+                      <p class="mb-0">35/100</p>
+                    </div>
+                    <div class="align-self-center">
+                      <i class="far fa-comments text-warning fa-3x"></i>
+                    </div>
+                  </div>
+                  <div class="px-md-1">
+                    <div class="progress mt-3 mb-1 rounded" style="height: 7px">
+                      <div class="progress-bar bg-warning" role="progressbar" style="width: 35%" aria-valuenow="35"
+                        aria-valuemin="0" aria-valuemax="100"></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!--Section: Museum-->
+
+      <!--Section: Grandpa-->
+      <section id="grandpa_section">
+        <div class="row">
+          <div class="row">
+            <div class="col-xl-3 col-sm-6 col-12 mb-4">
+              <div class="card">
+                <div class="card-body">
+                  <div class="d-flex justify-content-between px-md-1">
+                    <div>
+                      <h3 class="text-info">Farming</h3>
+                      <p class="mb-0">8/10</p>
+                    </div>
+                    <div class="align-self-center">
+                      <i class="fas fa-book-open text-info fa-3x"></i>
+                    </div>
+                  </div>
+                  <div class="px-md-1">
+                    <div class="progress mt-3 mb-1 rounded" style="height: 7px">
+                      <div class="progress-bar bg-info" role="progressbar" style="width: 80%" aria-valuenow="80"
+                        aria-valuemin="0" aria-valuemax="100"></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-xl-3 col-sm-6 col-12 mb-4">
+              <div class="card">
+                <div class="card-body">
+                  <div class="d-flex justify-content-between px-md-1">
+                    <div>
+                      <h3 class="text-warning">Fishing</h3>
+                      <p class="mb-0">35/100</p>
+                    </div>
+                    <div class="align-self-center">
+                      <i class="far fa-comments text-warning fa-3x"></i>
+                    </div>
+                  </div>
+                  <div class="px-md-1">
+                    <div class="progress mt-3 mb-1 rounded" style="height: 7px">
+                      <div class="progress-bar bg-warning" role="progressbar" style="width: 35%" aria-valuenow="35"
+                        aria-valuemin="0" aria-valuemax="100"></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!--Section: Grandpa-->
+    </div>
+  </main>
+  <!--Main layout-->
+
+  <!-- MDB -->
+  <script src="js/mdb.min.js"></script>
+  <!-- Custom scripts -->
+  <script src='js/jquery-3.6.0.js'></script>
+  <script src='js/parse_save.js'></script>
+  <script src='js/index.js'></script>
+  <script src='js/reupload.js'></script>
+</body>
+
+</html>
