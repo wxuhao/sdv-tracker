@@ -7,6 +7,19 @@ function parseFile(file) {
         // Dict of item: [path, to, item]
         paths = {
             playerName: ['player', 'name'],
+            farmName: ['farmName'],
+            day: ['dayOfMonthForSaveGame'],
+            season: ['seasonForSaveGame'],
+            year: ['yearForSaveGame'],
+            funds: ['money'],
+            mining: ['miningLevel'],
+            combat:['combatLevel'],
+            foraging:['foragingLevel'],
+            fishing:['fishingLevel'],
+            exp:['experiencePoints', 'int'],
+            knownCrafts:['craftingRecipies', 'string'],
+            craftedCrafts:['craftingRecipies', 'value'],
+            earnings: ['totalMoneyEarned'],
             friendNames: ['friendshipData', 'string'],
             friendPoints: ['friendshipData', 'Friendship', 'Points'],
         };
@@ -18,6 +31,7 @@ function parseFile(file) {
         })
         // Edit weird values
         info.playerName = [info.playerName[0]]
+        // Print info
         console.log(info);
     }
     reader.onerror = error => reject(error);
