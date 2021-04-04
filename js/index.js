@@ -13,7 +13,7 @@ window.addEventListener('DOMContentLoaded', () => {
 	});
 
 	// Track all sections that have an `id` applied
-	document.querySelectorAll('section[id]').forEach((section) => {
+	document.querySelectorAll('section div[id]').forEach((section) => {
 		observer.observe(section);
 	});
 	
